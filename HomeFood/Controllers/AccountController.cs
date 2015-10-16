@@ -37,8 +37,9 @@ namespace HomeFood.Controllers
                 var foodProvider = new FoodProviderModel()
                 {
                     Id = phone,
-                    City = city,
-                    Location = new Location(),
+                    City = city.ToLower(),
+                    Longititde = 77.391F,
+                    Latitude = 28.5355F,
                     Name = name,
                     Password = pwd
                 };

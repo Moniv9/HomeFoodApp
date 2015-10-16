@@ -67,10 +67,17 @@ namespace HomeFood.DAL
 
         #region Get
 
-        public FoodProviderModel GetUser(string providerPhone, string password)
+        public FoodProviderModel GetUser(string providerPhone, string password="")
         {
             var foodProviderCollection = _homeFoodDB.GetCollection<FoodProviderModel>(Collections.FoodProviderCollection);
-            return foodProviderCollection.Find(x => x.Id == providerPhone && x.Password == password).FirstOrDefaultAsync().Result;
+            if (string.IsNullOrEmpty(password))
+            {
+                return foodProviderCollection.Find(x => x.Id == providerPhone).FirstOrDefaultAsync().Result;
+            }
+            else
+            {
+                return foodProviderCollection.Find(x => x.Id == providerPhone && x.Password == password).FirstOrDefaultAsync().Result;
+            }            
         }
 
 
@@ -82,15 +89,8 @@ namespace HomeFood.DAL
 
         public IEnumerable<dynamic> GetVirtualHotels(string city)
         {
-            var virtualHotelCollection = _homeFoodDB.GetCollection<FoodModel>(Collections.VirtualHotelCollection);
             var foodProviderCollection = _homeFoodDB.GetCollection<FoodProviderModel>(Collections.FoodProviderCollection);
-
-     
-
-           
-
-            return null;
-
+            return foodProviderCollection.Find(x => x.City.Contains(city)).ToListAsync().Result;
         }
 
 
@@ -104,12 +104,10 @@ namespace HomeFood.DAL
         }
 
 
-        public dynamic GetVirtualHotelDetail(string providerPhone)
+        public IEnumerable<FoodModel> GetVirtualHotelDetail(string providerPhone)
         {
             var virtualHotelCollection = _homeFoodDB.GetCollection<FoodModel>(Collections.VirtualHotelCollection);
-            var foodProviderCollection = _homeFoodDB.GetCollection<FoodProviderModel>(Collections.FoodProviderCollection);
-
-            return null;
+            return virtualHotelCollection.Find(x => x.ProviderPhone == providerPhone).ToListAsync().Result;
         }
 
 
