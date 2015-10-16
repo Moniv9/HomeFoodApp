@@ -1,4 +1,3 @@
-M:\Web Applications\HomeFood\HomeFood\HomeFood\obj\Debug\HomeFood.csprojResolveAssemblyReference.cache
 M:\Web Applications\HomeFood\HomeFood\HomeFood\bin\HomeFood.dll
 M:\Web Applications\HomeFood\HomeFood\HomeFood\bin\HomeFood.pdb
 M:\Web Applications\HomeFood\HomeFood\HomeFood\bin\Microsoft.Web.Infrastructure.dll
@@ -29,3 +28,4 @@ M:\Web Applications\HomeFood\HomeFood\HomeFood\bin\System.Web.WebPages.Deploymen
 M:\Web Applications\HomeFood\HomeFood\HomeFood\bin\System.Web.WebPages.Razor.xml
 M:\Web Applications\HomeFood\HomeFood\HomeFood\obj\Debug\HomeFood.dll
 M:\Web Applications\HomeFood\HomeFood\HomeFood\obj\Debug\HomeFood.pdb
+M:\Web Applications\HomeFood\HomeFood\HomeFood\obj\Debug\HomeFood.csprojResolveAssemblyReference.cache

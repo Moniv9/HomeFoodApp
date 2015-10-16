@@ -9,6 +9,23 @@ namespace HomeFood.Controllers
     public class AccountController : Controller
     {
 
+        public ActionResult Index()
+        {
+            if (Session["user"] != null)
+            {
+                return View("Dashboard", Session["user"]);
+            }
+
+            return View();
+        }
+
+
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public JsonResult Register(string phone, string pwd, string name, string city)
         {
@@ -42,7 +59,7 @@ namespace HomeFood.Controllers
 
 
         [HttpPost]
-        public JsonResult Login(string phone, string pwd)
+        public ActionResult Dashboard(string phone, string pwd)
         {
             try
             {
@@ -55,7 +72,10 @@ namespace HomeFood.Controllers
                 if (userDetail == null)
                     return Json(new { Message = "Invalid password or phone number", status = 405 }, JsonRequestBehavior.AllowGet);
                 else
-                    return Json(new { User = userDetail, status = 200 }, JsonRequestBehavior.AllowGet);
+                {
+                    Session["user"] = userDetail;
+                    return View("Dashboard", userDetail);
+                }
 
             }
 

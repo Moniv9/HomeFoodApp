@@ -20,16 +20,18 @@ namespace HomeFood.Controllers
         {
             try
             {
-                if (string.IsNullOrEmpty(providerPhone) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price))
+                if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price))
                     return Json(new { Error = "Invalid input", status = 405 }, JsonRequestBehavior.AllowGet);
 
                 int foodPrice;
                 if (!int.TryParse(price, out foodPrice))
                     return Json(new { Error = "Invalid price", status = 405 }, JsonRequestBehavior.AllowGet);
 
+                var foodProvider = (FoodProviderModel)Session["user"];
+
                 var menuModel = new FoodModel()
                 {
-                    ProviderPhone = providerPhone,
+                    ProviderPhone = foodProvider.Id,
                     Price = foodPrice,
                     Description = description,
                     Image = AddImage(file),
@@ -85,10 +87,11 @@ namespace HomeFood.Controllers
         {
             if (file != null)
             {
-                string path = Server.MapPath("~/Files/" + Guid.NewGuid() + file.FileName);
+                var fileName = Guid.NewGuid() + file.FileName;
+                string path = Server.MapPath("~/Files/" + fileName);
                 file.SaveAs(path);
 
-                return path;
+                return "/Files/" + fileName;
             }
 
             //TODO : add default image

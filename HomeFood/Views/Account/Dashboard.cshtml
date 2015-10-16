@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        .cover {
+            padding: 2%;
+        }
+    </style>
+</head>
+<body class="cover">
+    <div>
+
+        <h3>Welcome , @Model.Name </h3>
+        <br />
+        <br />
+        <form action="~/menu/AddFoodItem" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Add Food Name</label>
+                <input class="form-control" name="name" placeholder="Food Item Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Add Food Description</label>
+                <textarea class="form-control" name="description" placeholder="About food description , category etc.."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Price</label>
+                <input type="number" class="form-control" name="price" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Upload Image</label>
+                <input type="file" name="file" accept="image/*;capture=camera" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Food Item</button>
+        </form>
+    </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+    });
+</script>
+</html>
